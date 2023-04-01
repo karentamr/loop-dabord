@@ -53,9 +53,8 @@ const MainLoop = () => {
 
 
     useEffect (() => {
-        console.log(masterPositionInMS);
         console.log(masterPositionStep);
-    }, [masterPositionInMS]);
+    }, [masterPositionStep]);
 
 
     return 

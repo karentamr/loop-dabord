@@ -12,6 +12,9 @@ const Recorder = () => {
     masterLengthInSteps,
     masterLengthInMS,
     togglePlay,
+    preRoll,
+    postRoll,
+
   } = useContext(LooperContext);
 
   const [isRecording, setIsRecording] = useState(false);
@@ -33,6 +36,7 @@ const Recorder = () => {
   });
 
   const startRecording = async () => {
+    setIsRecording(true);
     console.log("start recording");
     if (!isPlaying) togglePlay();
 
@@ -82,6 +86,9 @@ const Recorder = () => {
       type: "audio/webm",
     });
 
+    blob._sprite = {
+      trimmed:[0, masterLengthInMS+preRoll+postRoll]
+    }
     // ... rest of the stopRecording logic ...
 
     const base64Audio = await new Promise((resolve, reject) => {
@@ -114,8 +121,8 @@ const Recorder = () => {
     ) {
       console.log("STARTING");
       startRecording().then(() => {
-        console.log("STOPPING IN MASTERLENGTHINMS", masterLengthInMS);
-        setTimeout(stopRecording, masterLengthInMS+105);
+        console.log("STOPPING IN MASTERLENGTHINMS", masterLengthInMS+preRoll+postRoll);
+        setTimeout(stopRecording, masterLengthInMS+preRoll+postRoll+1000);
       });
     }
 
@@ -132,8 +139,6 @@ const Recorder = () => {
     isRecordingEngaged,
     isRecording,
     masterPositionStep,
-    masterLengthInSteps,
-    masterLengthInMS,
   ]);
 
   useEffect(() => {

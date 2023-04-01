@@ -2,10 +2,10 @@ import React, { createContext, useState, useEffect, useRef } from "react";
 export const LooperContext = createContext();
 
 export const LooperContextProvider = ({ children }) => {
-  const [masterBPM, setMasterBPM] = useState(120);
+  const [masterBPM, setMasterBPM] = useState(60);
   const [masterLengthInSteps, setMasterLengthInSteps] = useState(4);
-  const [preRoll, setPreRoll] = useState(100); // in ms
-  const [postRoll, setPostRoll] = useState(100); // in ms
+  const [preRoll, setPreRoll] = useState(60000 / masterBPM); // in ms
+  const [postRoll, setPostRoll] = useState(60000 / masterBPM); // in ms
   const [isPlaying, setIsPlaying] = useState(false);
   const [arrayOfHowls, setArrayOfHowls] = useState([]);
   const [masterPositionInMS, setMasterPositionInMS] = useState(0);
@@ -21,7 +21,7 @@ export const LooperContextProvider = ({ children }) => {
 
 //function to push blobs to the array
 const addToHowlArray = (howl) => {
-  setArrayOfHowls([...arrayOfHowls, {howl, id: arrayOfHowls.length}]);
+  setArrayOfHowls([...arrayOfHowls, {howl, id: howl._src, isFirstPlayback: true}]);
   console.log("howl added");
 };
 
