@@ -28,7 +28,6 @@ const MainLoop = () => {
     masterTogglePlay.current = togglePlay;
 
     const playTick = () => {
-        console.log("tick");
         setMasterPositionStep((prevMasterPositionStep) => (prevMasterPositionStep + 1) % masterLengthInSteps);
       };
     
@@ -53,7 +52,7 @@ const MainLoop = () => {
 
 
     useEffect (() => {
-        console.log(masterPositionStep);
+        console.log("tick"+masterPositionStep);
     }, [masterPositionStep]);
 
 

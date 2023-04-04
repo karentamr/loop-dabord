@@ -2,10 +2,10 @@ import React, { createContext, useState, useEffect, useRef } from "react";
 export const LooperContext = createContext();
 
 export const LooperContextProvider = ({ children }) => {
-  const [masterBPM, setMasterBPM] = useState(60);
+  const [masterBPM, setMasterBPM] = useState(120);
   const [masterLengthInSteps, setMasterLengthInSteps] = useState(4);
-  const [preRoll, setPreRoll] = useState(60000 / masterBPM); // in ms
-  const [postRoll, setPostRoll] = useState(60000 / masterBPM); // in ms
+  const [preRoll, setPreRoll] = useState(50); // in ms
+  const [postRoll, setPostRoll] = useState(50); // in ms
   const [isPlaying, setIsPlaying] = useState(false);
   const [arrayOfHowls, setArrayOfHowls] = useState([]);
   const [masterPositionInMS, setMasterPositionInMS] = useState(0);

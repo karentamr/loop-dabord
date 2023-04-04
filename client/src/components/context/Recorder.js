@@ -102,17 +102,11 @@ const Recorder = () => {
       src: [base64Audio],
       format: [],
     });
-    console.log("howl", howl);
     addToHowlArray(howl);
     recordedChunksRef.current = [];
   };
 
   useEffect(() => {
-    console.log(
-      isRecordingEngaged &&
-        !isRecording &&
-        masterPositionStep === masterLengthInSteps - 1
-    );
 
     if (
       isRecordingEngaged &&
@@ -122,7 +116,7 @@ const Recorder = () => {
       console.log("STARTING");
       startRecording().then(() => {
         console.log("STOPPING IN MASTERLENGTHINMS", masterLengthInMS+preRoll+postRoll);
-        setTimeout(stopRecording, masterLengthInMS+preRoll+postRoll+1000);
+        setTimeout(stopRecording, masterLengthInMS+preRoll+postRoll+500);
       });
     }
 
@@ -140,10 +134,6 @@ const Recorder = () => {
     isRecording,
     masterPositionStep,
   ]);
-
-  useEffect(() => {
-    console.log("recordedChunksRef", recordedChunksRef);
-  }, [recordedChunksRef]);
 
   return (
     <Wrapper>
