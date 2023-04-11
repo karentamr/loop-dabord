@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useContext, useState,useEffect } from "react";
 import { LooperContext } from "../context/LooperContextProvider";
+import { Howl } from "howler";
 
 const MainLoop = () => {
     const { ctx,
@@ -18,6 +19,7 @@ const MainLoop = () => {
         setMasterPositionStep,
         masterTogglePlay
     } = useContext(LooperContext);
+    
 
     const [intervalId, setIntervalId] = useState(null);
 
@@ -28,7 +30,7 @@ const MainLoop = () => {
     masterTogglePlay.current = togglePlay;
 
     const playTick = () => {
-        setMasterPositionStep((prevMasterPositionStep) => (prevMasterPositionStep + 1) % masterLengthInSteps);
+setMasterPositionStep((prevMasterPositionStep) => (prevMasterPositionStep + 1) % masterLengthInSteps);
       };
     
       useEffect(() => {
@@ -48,12 +50,8 @@ const MainLoop = () => {
         };
       }, [isPlaying, masterBPM]);
 
+      
 
-
-
-    useEffect (() => {
-        console.log("tick"+masterPositionStep);
-    }, [masterPositionStep]);
 
 
     return 
