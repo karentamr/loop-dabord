@@ -53,7 +53,7 @@ const TrackPlayer = () => {
         sprite: newHowlRef.current._sprite,
       });
       newHowlCopy._sprite.trimmed = [
-        ((masterPositionStep) * (60000 / masterBPM))+preRoll+75,
+        ((masterPositionStep) * (60000 / masterBPM))+preRoll+200,
         preRoll + masterLengthInMS + postRoll,
       ];
       console.log("new howl added", newHowlCopy._sprite.trimmed);
@@ -78,19 +78,20 @@ const TrackPlayer = () => {
       setTimeout(() => {
         howlsToPlayRef.current.forEach((howl) => {
           console.log("YOYOYOYO"+howl);
+          
+
           howl.howl.play();
-          howl.howl.fade(0, 1, preRoll, howl.howl._sounds[0]._id);
           setTimeout(() => {
             howl.howl.fade(1, 0, postRoll, howl.howl._sounds[0]._id);
             howl.hasPlayed = true;
-          }, preRoll + masterLengthInMS);
+          }, preRoll + masterLengthInMS+postRoll);
           setTimeout(() => {
             howl.howl.fade(0,1,postRoll,howl.howl._sounds[0]._id);
-          }, preRoll + masterLengthInMS+postRoll+postRoll/2);
+          }, preRoll + masterLengthInMS+postRoll+100);
         });
 
         return;
-      }, (60000 / masterBPM) - preRoll-50)
+      }, (60000 / masterBPM) - preRoll-200)
 
       howlsPlayingRef.current = [...howlsToPlayRef.current];
     }

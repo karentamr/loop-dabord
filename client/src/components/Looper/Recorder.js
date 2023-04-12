@@ -11,6 +11,7 @@ import { FaTrash } from "react-icons/fa";
 
 const Recorder = () => {
   const {
+    audioContext,
     addToHowlArray,
     masterPositionStep,
     isPlaying,
@@ -32,7 +33,7 @@ const Recorder = () => {
   const { currentUser } = useContext(UserContext);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordingEngaged, setIsRecordingEngaged] = useState(false);
-  const [volume, setVolume] = useState(0.5); // default volume is 50%
+  const [volume, setVolume] = useState(1);
   const navigate = useNavigate();
 
   const mediaRecorderRef = useRef(null);
@@ -109,7 +110,7 @@ const Recorder = () => {
   };
   const handleStop = async () => {
     const blob = new Blob(recordedChunksRef.current, {
-      type: "audio/webm",
+      type: "audio/wav",
     });
 
     const base64Audio = await new Promise((resolve, reject) => {
@@ -123,7 +124,7 @@ const Recorder = () => {
 
     const howl = new Howl({
       src: [base64Audio],
-      format: [],
+      format: ['wav'],
     });
     addToHowlArray(howl);
 
@@ -153,7 +154,7 @@ const Recorder = () => {
           );
           setTimeout(stopRecording, masterLengthInMS + preRoll + postRoll);
         });
-      }, 60000 / masterBPM - preRoll);
+      }, (60000 / masterBPM)-preRoll-100);
     }
 
     return () => {

@@ -72,7 +72,7 @@ const Profile = () => {
   }, [isLoading,currentUser]);
 
   // Function to convert base64 audio string to a Blob
-function base64ToBlob(base64, mimeType = 'audio/webm') {
+function base64ToBlob(base64, mimeType = 'audio/wav') {
   const binary = atob(base64.split(',')[1]);
   const array = new Uint8Array(binary.length);
 

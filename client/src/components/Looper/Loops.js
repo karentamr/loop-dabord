@@ -16,7 +16,10 @@ const Loops = () => {
     preRoll,
     postRoll,
     masterBPM,
-    masterLengthInSteps
+    masterLengthInSteps,
+    deleteLoopFromAllArrays,
+    trackVolumes,
+    handleTrackVolumeChange
   } = useContext(LooperContext);
 
   const waveformsRef = useRef([]);
@@ -52,10 +55,13 @@ const Loops = () => {
       clipPercentage={clipPercentage}
     />
     <PointerVertical clipPercentage={clipPercentage}/>
-    {arrayOfBlobURLs.map((trackURL, index) => (
+    {arrayOfBlobURLs.map((trackURL, index) => (<>
+      <DeleteButton onClick={()=>deleteLoopFromAllArrays(index)}>X</DeleteButton>
+      
       <LoopWrapper key={index} style={{ backgroundColor: `var(${colorProps[index % 8]})` }}>
         <Waveform trackURL={trackURL} />
       </LoopWrapper>
+      </>
     ))}
   </LoopsWrapper>
   </Wrapper>
@@ -64,6 +70,18 @@ const Loops = () => {
 const Wrapper = styled.div`
   padding: 0 80px;
   `;
+const DeleteButton = styled.button`
+align-self:flex-end;
+border:none;
+background-color:transparent;
+color:var(--primary-color);
+font-size:1.5rem;
+font-weight:700;
+`
+const SliderWrapper = styled.div`
+`
+const Slider = styled.input`
+`
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -71,6 +89,7 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   background-color: rgb(255,255,255,0.05);
+  
   clip-path: inset(0 ${({ clipPercentage }) => clipPercentage}% 0 ${({ clipPercentage }) => clipPercentage}%);
   pointer-events: none;
 `;

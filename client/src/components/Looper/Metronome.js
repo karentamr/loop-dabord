@@ -13,10 +13,10 @@ const Metronome = () => {
     if (isPlaying) {
       if(!isMetronomeOn) return;
       if (masterPositionStep % 4 === 0) {
-        tick1.volume(0.3);
+        tick1.volume(0.5);
         tick1.play();
       } else {
-        tick2.volume(0.8);
+        tick2.volume(1);
         tick2.play();
       }
     }

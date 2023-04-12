@@ -111,7 +111,7 @@ const LandingPage = () => {
         
         navigate('/authenticate');
         
-      }, 4000);
+      }, 6000);
 
       return () => {
         clearTimeout(timer1);

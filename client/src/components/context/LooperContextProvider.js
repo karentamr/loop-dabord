@@ -16,7 +16,7 @@ export const LooperContextProvider = ({ children }) => {
   const [selectedAudioDevice, setSelectedAudioDevice] = useState(null);
   const [isMetronomeOn, setIsMetronomeOn] = useState(true);
   const [masterVolume, setMasterVolume] = useState(1);
-
+  const [trackVolumes, setTrackVolumes] = useState([0.5]);
   const [masterLengthInMS, setMasterLengthInMS] = useState(
     (60 / masterBPM) * masterLengthInSteps * 1000
   );
@@ -41,6 +41,28 @@ useEffect(() => {
 const addToHowlArray = (howl) => {
   setArrayOfHowls([...arrayOfHowls, {howl, id: howl._src, isFirstPlayback: true}]);
   console.log("howl added");
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
+  console.log("arrayOfHowls", arrayOfHowls)
 };
 
 const addToBlobURLArray = (blobURL) => {
@@ -63,7 +85,39 @@ const clearEverything = () => {
   console.log("cleared");
 };
 
-  
+const deleteLoopFromAllArrays = (index) => {
+  let newHowls = arrayOfHowls.filter((howl, i) => i !== index);
+  let newBlobs = arrayOfBlobURLs.filter((blob, i) => i !== index);
+  let new64 = arrayOf64Audio.filter((chunk, i) => i !== index);
+  setArrayOfHowls(newHowls);
+  setArrayOfBlobURLs(newBlobs);
+  setArrayOf64Audio(new64);
+};
+
+const handleTrackVolumeChange = (trackIndex, volume) => {
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  console.log("trackIndex", trackIndex);
+  let newTrackVolumes = [...trackVolumes];
+  newTrackVolumes[trackIndex] = volume;
+  setTrackVolumes(newTrackVolumes);
+
+  arrayOfHowls[trackIndex].howl.volume(volume);
+};
   return (
     <LooperContext.Provider
       value={{
@@ -100,7 +154,9 @@ const clearEverything = () => {
         setIsMetronomeOn,
         tick1,
         tick2,
-
+        deleteLoopFromAllArrays,
+        trackVolumes,
+        handleTrackVolumeChange
         }}
     >
       

@@ -51,8 +51,10 @@ const VerticalLine = styled.div`
   left: ${({ positionPercent }) => positionPercent}%;
   top: 0;
   bottom: 0;
-  width: 1px;
-  background-color: rgba(255, 165, 0, 0.3);
+  width: 3px;
+  margin-top:26px;
+  background-color: var(--primary-color);
+  min-height: 120px;
 `;
 
 const Pointer = styled.div`
@@ -61,7 +63,7 @@ const Pointer = styled.div`
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: #ffa500;
+  background-color: var(--secondary-color);
   transition: left 200ms ease-out;
   min-height: 100px;
 `;
