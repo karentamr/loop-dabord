@@ -1,6 +1,6 @@
 # Loop d'Abord
 
-##Description
+## Description
 Loop d'Abord is an easy-to-use, web-based pedal looper application designed for live music practice.
 
 ## Features
