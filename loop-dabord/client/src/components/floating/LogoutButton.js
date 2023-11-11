@@ -1,0 +1,69 @@
+import React from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContextProvider";
+import { LooperContext } from "../context/LooperContextProvider";
+import { AiOutlineLogout } from "react-icons/ai";
+
+const LogoutButton = () => {
+  const navigate = useNavigate();
+  const { setIsGuest, setCurrentUser, logout } = useContext(UserContext);
+  const { setIsPlaying } = useContext(LooperContext);
+
+  const handleLogoutClick = () => {
+    setIsPlaying(false);
+    setIsGuest(false);
+    setCurrentUser(null);
+    logout();
+    navigate("/authenticate");
+  };
+
+  return (
+    <Wrapper>
+      <Button onClick={handleLogoutClick}>
+        <AiOutlineLogout />
+      </Button>
+      <Text>LOGOUT</Text>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+
+  right: 3%;
+  z-index: 10;
+
+
+`;
+
+const Text = styled.p`
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  color: var(--primary-color);
+  pointer-events: none;
+  font-family: 'Lilita One', sans-serif;
+  
+
+`;
+
+const Button = styled.button`
+  height: 50px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: var(--background-color);
+  margin: 0 10px;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+`;
+
+export default LogoutButton;
