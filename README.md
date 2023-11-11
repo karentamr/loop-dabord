@@ -18,7 +18,6 @@ This application is a creative tool for musicians and audio enthusiasts, designe
 
 ### Built With
 - **React**: For building a dynamic user interface.
-- **Styled-components**: Adding a bit of flair to the UI.
 - **Howler.js & Web Audio API**: The core of audio processing.
 - **MongoDB**: For storing loop data and user profiles.
 
@@ -38,8 +37,8 @@ Interested in exploring or using the application? Here's how to get it up and ru
 - **Volume Adjustment**: Fine-tune your sound with the volume slider.
 - **Persistence**: Save your loops with custom names and load them from your profile whenever you need.
 
-## A Note from the Developer
-As my first major foray into web development, this project has been a journey of discovery, challenges, and growth. I've learned a lot about the intricacies of audio processing and the limitations of certain technologies, like timing issues with React's `useEffect`. It's been a humbling and enriching experience, and I hope this application inspires and brings joy to those who use it.
+## A Note from
+As my first major foray into web development, this project has been a journey of discovery, challenges, and growth. I've learned a lot about the intricacies of audio processing and the limitations of certain technologies, like the inevitable and eternal timing issues with React's `useEffect`. It's been a humbling and enriching experience, and I hope this application inspires and brings joy to those who use it.
 
 I'm always open to feedback and suggestions, as they help me grow and improve. Feel free to reach out if you have any thoughts, questions, or just want to chat about the project.
 
